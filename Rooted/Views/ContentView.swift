@@ -88,7 +88,7 @@ struct ContentView: View {
                     }
                     }
                     
-                    
+//                    
 //                    Circle().frame(width:100)
 //                        .onTapGesture{
 //                            user.completedTasksAmount = 0
@@ -100,7 +100,7 @@ struct ContentView: View {
 //                            
 //                            
 //                        }
-                    
+//                    
                 }.frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(.backgroundBrown)
             

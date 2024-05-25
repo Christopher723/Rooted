@@ -62,7 +62,7 @@ struct TaskEditView: View {
                 },label: {
                     HStack {
                         Spacer()
-                        Text("Suggested Task")
+                        Text("Suggested Goal")
                         Spacer()
                     }
                 }).disabled(myName != "" || myBio != "")

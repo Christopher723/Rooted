@@ -14,6 +14,7 @@ struct MainView: View {
     @State var isRaining: Bool = false
     @State var isFinished: Bool = false
     @State var isFert: Bool = false
+    @State var randomAffirm: String = ""
     var myPlants: [String] = ["root1","root2","root3","root4","root5","root6","root7","root8","root9"]
     
     @State var currentPlantIndex: Int = 0
@@ -118,7 +119,7 @@ struct MainView: View {
                         
                     }
                     .padding(.vertical, 10)
-                    Text(myAffirms.randomElement() ?? "")
+                    Text(randomAffirm)
                         .foregroundStyle(.mainGreen)
                         .font(Font.custom("OriyaSangamMN-Bold", size: 26))
                         
@@ -203,6 +204,7 @@ struct MainView: View {
             }
 
         }.ignoresSafeArea(edges: .bottom).onAppear(){
+            randomAffirm = myAffirms.randomElement() ?? ""
 
             if user.completedTasksAmount < 2{
                 currentPlantIndex = 1
