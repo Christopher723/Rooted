@@ -31,34 +31,43 @@ struct TaskDetailView: View {
                 
                 Spacer()
                 HStack(spacing: 20){
-                    ZStack{
-                        Rectangle()
-                            .frame(width: 120, height: 45)
-                            .foregroundStyle(.red)
-                        Text("Delete")
-                            .bold()
-                    }
-                    .onTapGesture{
+                    
+                    Button(action: {UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                         if let index = user.myTasks.firstIndex(where: { $0.id == myTask.id }) {
                             user.myTasks.remove(at: index)}
                         user.save()
-                        isShowing.toggle()
-                    }
-                    ZStack{
-                        Rectangle()
-                            .frame(width: 120, height: 45)
-                            .foregroundStyle(.green)
-                        Text("Complete")
-                            .bold()
-                    }
-                    .onTapGesture{
+                        isShowing.toggle()}, label: {
+                            ZStack{
+                                Rectangle()
+                                    .frame(width: 120, height: 45)
+                                    .foregroundStyle(.red)
+                                Text("Delete")
+                                    .foregroundStyle(.black)
+                                    .bold()
+                            }
+                    })
+                   
+                   
+                    
+                    Button(action: {UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                         user.completedTasksAmount += (1 * multiplier)
                         if let index = user.myTasks.firstIndex(where: { $0.id == myTask.id }) {
+                            
                             user.completedTasks.append(myTask)
                             user.myTasks.remove(at: index)}
                         user.save()
-                        isShowing.toggle()
-                    }
+                        isShowing.toggle()}, label: {
+                            ZStack{
+                                Rectangle()
+                                    .frame(width: 120, height: 45)
+                                    .foregroundStyle(.green)
+                                Text("Complete")
+                                    .bold()
+                                    .foregroundStyle(.black)
+                            }
+                    })
+                   
+                    
                    
                 }
                 .padding()
@@ -95,8 +104,8 @@ struct TaskDetailView: View {
         
 }
 
-#Preview{
-    TaskDetailView(isShowing: .constant(true),
-                   myTask: Task(name: "Drink more water", bio:
-            "today is the day you go and drink more water do it today right now", type: 12))
-}
+//#Preview{
+//    TaskDetailView(isShowing: .constant(true),
+//                   myTask: Task(name: "Drink more water", bio:
+//            "today is the day you go and drink more water do it today right now", type: 12))
+//}

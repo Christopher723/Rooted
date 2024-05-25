@@ -65,7 +65,7 @@ struct TaskEditView: View {
                         Text("Suggested Task")
                         Spacer()
                     }
-                })
+                }).disabled(myName != "" || myBio != "")
             }
 
             Section{

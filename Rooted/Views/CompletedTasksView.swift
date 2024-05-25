@@ -13,8 +13,14 @@ struct CompletedTasksView: View {
     var whatTasks: [Task]
     var body: some View {
         ZStack{
-            
+                
                 ScrollView{
+                    Text("Completed Goals")
+                        .font(Font.custom("OriyaSangamMN-Bold", size: 30))
+                        .font(.title)
+                        .underline()
+                        .foregroundStyle(.mainGreen)
+                        .padding()
                     Spacer().frame(height: 50)
                     ForEach(whatTasks, id:  \.self){
                         task in

@@ -32,7 +32,7 @@ struct ContentView: View {
                                 Text("Your Plant")
                                     .font(Font.custom("OriyaSangamMN-Bold", size: 30))
                                     .font(.title)
-                                    .underline()
+                                   
                                     .foregroundStyle(.mainGreen)
                             }
                         }
@@ -58,7 +58,7 @@ struct ContentView: View {
                             Text("Your Goals")
                                 .font(Font.custom("OriyaSangamMN-Bold", size: 30))
                                 .font(.title)
-                                .underline()
+                               
                                 .foregroundStyle(.mainGreen)
                         }
                     }
@@ -82,7 +82,7 @@ struct ContentView: View {
                             Text("Your Achievements")
                                 .font(Font.custom("OriyaSangamMN-Bold", size: 30))
                                 .font(.title)
-                                .underline()
+                           
                                 .foregroundStyle(.mainGreen)
                         }
                     }
@@ -106,9 +106,9 @@ struct ContentView: View {
             
             }.onAppear(){
                 if user.onBoarding != true{
-                    user.myTasks.append(Task(name: "Click Me!", bio: "Welcome to Rooted! You completed your first task. Hit Complete and check your plants progress!", type: 2))
-                    user.myTasks.append(Task(name: "Add a Goal!", bio: "Welcome to Rooted! You completed your first task. Try adding new task with the plus button!", type: 2))
-                    user.myTasks.append(Task(name: "Complete Plant!", bio: "This is a freebie. Complete this task and go check on your plant. It is ready to be potted. Click the leaf Icon and see your plant in the you achievements section!", type: 2))
+                    user.myTasks.append(Task(name: "Click Me!", bio: "Welcome to Rooted! You completed your first goal. Hit Complete and check your plants progress!", type: 2))
+                    user.myTasks.append(Task(name: "Add a Goal!", bio: "Welcome to Rooted! You completed your first goal. Try adding new task with the plus button!", type: 2))
+                    user.myTasks.append(Task(name: "Complete Plant!", bio: "This is a freebie. Complete this goal and go check on your plant. It is ready to be potted. Click the leaf Icon and see your plant in the you achievements section!", type: 2))
                     user.onBoarding = true
                     user.save()
                 }

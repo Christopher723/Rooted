@@ -18,7 +18,7 @@ struct TaskView: View {
         if isExpanded{
             VStack{
                 HStack{
-                    Spacer()
+                    Spacer().frame(width:55)
                     Text(myName)
                         .font(.system(size: 25))
                         .lineLimit(1)
@@ -37,7 +37,7 @@ struct TaskView: View {
                 .overlay(alignment: .leading){
                     Circle()
                         .stroke(myColor, lineWidth: 5)
-                        .fill(myBackground)
+                        .fill(myColor)
                         .frame(width: 40)
                         .padding(.horizontal, 10)
                         
@@ -52,7 +52,7 @@ struct TaskView: View {
         }
         else{
             HStack{
-                Spacer()
+                Spacer().frame(width: 55)
                 Text(myName)
                     .font(.system(size: 25))
                     .lineLimit(1)
@@ -60,6 +60,7 @@ struct TaskView: View {
                     .underline()
                     .foregroundStyle(Color("fontColor"))
                 Spacer()
+                
             }
             .onTapGesture{
                 withAnimation(.snappy()) {
@@ -70,7 +71,7 @@ struct TaskView: View {
             .overlay(alignment: .leading){
                 Circle()
                 .stroke(myColor, lineWidth: 5)
-                .fill(myBackground)
+                .fill(myColor)
                 .frame(width: 40)
                 .padding(.horizontal, 10)
             }

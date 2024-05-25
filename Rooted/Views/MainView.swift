@@ -40,7 +40,7 @@ struct MainView: View {
                                         withAnimation(.linear(duration: 2)) {
                                             isRaining = true
                                         }
-                                        
+                                        UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
                                         DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
                                             withAnimation(.linear(duration: 1)) {
                                                 isRaining = false
@@ -55,7 +55,10 @@ struct MainView: View {
                                 .frame(width: 30)
                                 .padding(.bottom, 10)
                                 .onTapGesture{
-                                    currentPlantIndex += 1
+                                    if user.completedTasksAmount * 10 >= 200{
+                                        UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+                                    }
+                                    
                                 
                                 }
                             Image("leaf")
@@ -63,6 +66,7 @@ struct MainView: View {
                                 .scaledToFit()
                                 .frame(width: 35)
                                 .onTapGesture{
+                                    UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
                                     if user.completedTasksAmount * 10 >= 300{
                                         user.completedPlants.append(user.completedTasks)
                                         user.completedTasks = []
@@ -108,8 +112,10 @@ struct MainView: View {
                             .padding(0)
                             
                             .onTapGesture{
-                                isShowing = true
-                                print(user.completedTasksAmount)
+                                if user.completedTasks.count > 1{
+                                    isShowing = true
+                                    print(user.completedTasksAmount)
+                                }
                             }
                         
                     }

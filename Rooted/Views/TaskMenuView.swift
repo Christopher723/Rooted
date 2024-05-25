@@ -17,7 +17,7 @@ struct TaskMenuView: View {
             
             Color(.backgroundBrown).ignoresSafeArea()
             VStack{
-                Text("Todays Goals")
+                Text("Today's Goals")
                     .font(Font.custom("OriyaSangamMN-Bold", size: 30))
                     .font(.title)
                     .underline()
