@@ -140,7 +140,7 @@ struct MainView: View {
                     Spacer()
                    
                     ZStack{
-                        Image(myPlants[8])
+                        Image(myPlants[currentPlantIndex])
                             .resizable()
                             .scaledToFit()
                             .frame(width: UIScreen.main.bounds.width + 10)
