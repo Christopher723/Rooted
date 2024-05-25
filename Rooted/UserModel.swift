@@ -105,3 +105,55 @@ class RainFall: SKScene{
     }
     
 }
+class MagicFall: SKScene{
+    override func sceneDidLoad() {
+        
+        size = UIScreen.main.bounds.size
+        scaleMode = .aspectFill
+        backgroundColor = .clear
+        
+        anchorPoint = CGPoint(x: 0.5, y: 0.2)
+            
+        
+        let node = SKEmitterNode(fileNamed: "Magic.sks")!
+        addChild(node)
+        node.particlePositionRange.dx = UIScreen.main.bounds.width
+    }
+    
+}
+class SmokeFall: SKScene{
+    override func sceneDidLoad() {
+        
+        size = UIScreen.main.bounds.size
+        scaleMode = .aspectFill
+        backgroundColor = .clear
+        
+        anchorPoint = CGPoint(x: 0.5, y: 0.2)
+            
+        
+        let node = SKEmitterNode(fileNamed: "Smoke.sks")!
+        addChild(node)
+        node.particlePositionRange.dx = UIScreen.main.bounds.width
+    }
+    
+}
+ var myAffirms = ["I am fearless in pursuit of my dreams.",
+              "I radiate confidence and self-assurance.",
+              "My potential is limitless.",
+              "I am surrounded by love and support.",
+              "I am open to new opportunities and experiences.",
+              "I am a magnet for success and prosperity.",
+              "I trust the journey of my life.",
+              "I am deserving of all the good things that come my way.",
+              "I am at peace with who I am.",
+              "I am worthy of respect and admiration.",
+              "I am enough.",
+              "I choose joy.",
+              "Every day is a fresh start.",
+              "I believe in my abilities.",
+              "I am resilient and strong.",
+              "I attract positivity into my life.",
+              "I am worthy of love and happiness.",
+              "I embrace change and growth.",
+              "I am in control of my thoughts and emotions.",
+              "I am grateful for all that I have."]

@@ -25,6 +25,8 @@
 		3A8D0D122BEAB83C002A0384 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A8D0D102BEAB83C002A0384 /* Assets.xcassets */; };
 		3A8D0D142BEAB876002A0384 /* Rain.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3A8D0D132BEAB876002A0384 /* Rain.sks */; };
 		3A8D0D1E2BEAC337002A0384 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8D0D1D2BEAC337002A0384 /* SwiftUIView.swift */; };
+		3AB28E8A2C021F6E00FE14ED /* Magic.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3AB28E892C021F6E00FE14ED /* Magic.sks */; };
+		3AB28E8C2C0222E200FE14ED /* Smoke.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3AB28E8B2C0222E200FE14ED /* Smoke.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +51,8 @@
 		3A8D0D102BEAB83C002A0384 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A8D0D132BEAB876002A0384 /* Rain.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Rain.sks; sourceTree = "<group>"; };
 		3A8D0D1D2BEAC337002A0384 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
+		3AB28E892C021F6E00FE14ED /* Magic.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Magic.sks; sourceTree = "<group>"; };
+		3AB28E8B2C0222E200FE14ED /* Smoke.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Smoke.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +128,8 @@
 				3A780B0F2BE3FC390091F310 /* TaskView.swift */,
 				3A8D0D1D2BEAC337002A0384 /* SwiftUIView.swift */,
 				3A8D0D132BEAB876002A0384 /* Rain.sks */,
+				3AB28E892C021F6E00FE14ED /* Magic.sks */,
+				3AB28E8B2C0222E200FE14ED /* Smoke.sks */,
 				3A8D0D102BEAB83C002A0384 /* Assets.xcassets */,
 			);
 			path = Views;
@@ -188,6 +194,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A780B0A2BE294EE0091F310 /* PrivacyInfo.xcprivacy in Resources */,
+				3AB28E8A2C021F6E00FE14ED /* Magic.sks in Resources */,
+				3AB28E8C2C0222E200FE14ED /* Smoke.sks in Resources */,
 				3A3FDCB62BD1A6C40083AB61 /* Preview Assets.xcassets in Resources */,
 				3A3FDCB32BD1A6C40083AB61 /* Assets.xcassets in Resources */,
 				3A8D0D142BEAB876002A0384 /* Rain.sks in Resources */,

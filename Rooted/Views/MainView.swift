@@ -12,6 +12,8 @@ struct MainView: View {
     @EnvironmentObject var user: User
     @State var isShowing: Bool = false
     @State var isRaining: Bool = false
+    @State var isFinished: Bool = false
+    @State var isFert: Bool = false
     var myPlants: [String] = ["root1","root2","root3","root4","root5","root6","root7","root8","root9"]
     
     @State var currentPlantIndex: Int = 0
@@ -28,11 +30,12 @@ struct MainView: View {
                             .padding(.top,15)
                             
                     }
-                    
+                   
                     VStack{
                         HStack(spacing: 85){
                             Image("wateringCan")
                                 .resizable()
+                                .brightness(user.completedTasksAmount * 10 >= 100 ? 0 : -0.5)
                                 .scaledToFit()
                                 .frame(width: 40)
                                 .onTapGesture {
@@ -51,28 +54,52 @@ struct MainView: View {
                                 }
                             Image("bag")
                                 .resizable()
+                                .brightness(user.completedTasksAmount * 10 >= 200 ? 0 : -0.5)
                                 .scaledToFit()
                                 .frame(width: 30)
                                 .padding(.bottom, 10)
                                 .onTapGesture{
+                                    
                                     if user.completedTasksAmount * 10 >= 200{
+                                        withAnimation(.linear(duration: 2)) {
+                                            isFert = true
+                                        }
                                         UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
+                                            withAnimation(.linear(duration: 1)) {
+                                                isFert = false
+                                            }
+                                            
+                                        }
                                     }
                                     
                                 
                                 }
                             Image("leaf")
                                 .resizable()
+                                .brightness(user.completedTasksAmount * 10 >= 300 ? 0 : -0.5)
                                 .scaledToFit()
                                 .frame(width: 35)
                                 .onTapGesture{
-                                    UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+                                    
+                                    
                                     if user.completedTasksAmount * 10 >= 300{
-                                        user.completedPlants.append(user.completedTasks)
-                                        user.completedTasks = []
-                                        user.completedTasksAmount = 0
-                                        user.save()
-                                        currentPlantIndex = 0
+                                        withAnimation(.linear(duration: 2)) {
+                                            isFinished = true
+                                        }
+                                        UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
+                                            withAnimation(.linear(duration: 1)) {
+                                                isFinished = false
+                                                user.completedPlants.append(user.completedTasks)
+                                                user.completedTasks = []
+                                                user.completedTasksAmount = 0
+                                                user.save()
+                                                currentPlantIndex = 0
+                                            }
+                                            
+                                        }
+                                        
                                     }
                                 }
                         }.padding(.bottom, 5)
@@ -90,22 +117,30 @@ struct MainView: View {
                         }
                         
                     }
-                    .padding()
-                    .overlay(
+                    .padding(.vertical, 10)
+                    Text(myAffirms.randomElement() ?? "")
+                        .foregroundStyle(.mainGreen)
+                        .font(Font.custom("OriyaSangamMN-Bold", size: 26))
                         
-                        HStack(spacing: 100) {
-                            Rectangle()
-                                .frame(width: 4, height: 23)
-                                .foregroundColor(.white)
-                            Rectangle()
-                                .frame(width: 4, height: 23)
-                                .foregroundColor(.white)
-                        }.padding(.top, 51)
-                    )
+                    
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal, 10)
+                        .padding(.top, 15)
+//                    .overlay(
+//                        
+//                        HStack(spacing: 100) {
+//                            Rectangle()
+//                                .frame(width: 4, height: 23)
+//                                .foregroundColor(.white)
+//                            Rectangle()
+//                                .frame(width: 4, height: 23)
+//                                .foregroundColor(.white)
+//                        }.padding(.top, 51)
+//                    )
                     Spacer()
                    
                     ZStack{
-                        Image(myPlants[currentPlantIndex])
+                        Image(myPlants[8])
                             .resizable()
                             .scaledToFit()
                             .frame(width: UIScreen.main.bounds.width + 10)
@@ -117,6 +152,21 @@ struct MainView: View {
                                     print(user.completedTasksAmount)
                                 }
                             }
+                            .overlay{
+                                VStack{
+                                    HStack{
+                                        Image("bag")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 120)
+                                            .rotationEffect(.degrees(100))
+                                            .padding(40)
+                                        Spacer()
+                                    }
+                                    Spacer().frame(height: 120)
+                                }.opacity(isFert ? 1.0 : 0)
+                            }
+                        
                         
                     }
                     
@@ -136,9 +186,21 @@ struct MainView: View {
                     .ignoresSafeArea()
                 
             }
-                
-                
         }
+            if isFinished{
+                GeometryReader{_ in
+                    SpriteView(scene: MagicFall(), options:[.allowsTransparency])
+                        .ignoresSafeArea()
+                    
+                }
+            }
+            if isFert{
+                GeometryReader{_ in
+                    SpriteView(scene: SmokeFall(), options:[.allowsTransparency])
+                        .ignoresSafeArea()
+                    
+                }
+            }
 
         }.ignoresSafeArea(edges: .bottom).onAppear(){
 
