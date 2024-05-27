@@ -118,10 +118,10 @@
 		3A8D0D0E2BEAB80A002A0384 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3A3FDCBE2BD1A8160083AB61 /* MainView.swift */,
 				3A3FDCB02BD1A6C30083AB61 /* ContentView.swift */,
 				3A3FDCBC2BD1A7FF0083AB61 /* TaskMenuView.swift */,
 				3A3FDCC02BD1A8230083AB61 /* CollectionView.swift */,
-				3A3FDCBE2BD1A8160083AB61 /* MainView.swift */,
 				3A3FDCC42BD1ABF40083AB61 /* TaskEditView.swift */,
 				3A780B032BE171B90091F310 /* TaskDetailView.swift */,
 				3A780B0D2BE3F6040091F310 /* CompletedTasksView.swift */,

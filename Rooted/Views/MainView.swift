@@ -8,28 +8,34 @@
 import SwiftUI
 import _SpriteKit_SwiftUI
 
+
 struct MainView: View {
     @EnvironmentObject var user: User
     @State var isShowing: Bool = false
     @State var isRaining: Bool = false
     @State var isFinished: Bool = false
     @State var isFert: Bool = false
+    @State var showingAlert = false
     @State var randomAffirm: String = ""
+    @State var multiplier: Int = 1
     var myPlants: [String] = ["root1","root2","root3","root4","root5","root6","root7","root8","root9"]
     
     @State var currentPlantIndex: Int = 0
     @State var plantPadding: CGFloat = 0
     var body: some View {
-        ZStack{
+        NavigationStack{
+        ZStack(){
             Color(.backgroundBrown).ignoresSafeArea()
             VStack(spacing:0){
                 VStack{
-                    HStack{
-                        Text("R O O T E D")
-                            .font(Font.custom("OriyaSangamMN-Bold", size: 30))
-                            .foregroundStyle(Color("fontColor"))
-                            .padding(.top,15)
+                    ZStack{
+                        HStack{
+                            Text("R O O T E D")
+                                .font(Font.custom("OriyaSangamMN-Bold", size: 30))
+                                .foregroundStyle(Color("fontColor"))
+                                .padding(.top,15)
                             
+                        }
                     }
                    
                     VStack{
@@ -97,6 +103,19 @@ struct MainView: View {
                                                 user.completedTasksAmount = 0
                                                 user.save()
                                                 currentPlantIndex = 0
+                                                if user.completedPlants.count == 0{
+                                                    multiplier = 10
+                                                }
+                                                if user.completedPlants.count == 1{
+                                                    multiplier = 5
+                                                }
+                                                if user.completedPlants.count == 2{
+                                                    multiplier = 3
+                                                }
+                                                if user.completedPlants.count == 3{
+                                                    multiplier = 1
+                                                }
+
                                             }
                                             
                                         }
@@ -114,7 +133,11 @@ struct MainView: View {
                                 .frame(width: min(CGFloat(user.completedTasksAmount * 10), 300), height: 20)
                                 .cornerRadius(20)
                                 .foregroundStyle(.green)
+                                
                             
+                            
+                        }.onTapGesture {
+                            showingAlert.toggle()
                         }
                         
                     }
@@ -202,10 +225,40 @@ struct MainView: View {
                     
                 }
             }
+            VStack {
+                Spacer()
+                
+                
+                HStack{
+                    NavigationLink{CollectionView().environmentObject(user)} label: {
+                        Image(systemName: "trophy")
+                            .font(.title.weight(.semibold))
+                            .padding()
+                            .background(.button)
+                            .foregroundColor(.white)
+                            .clipShape(Circle())
+                            .shadow(radius: 4, x: 0, y: 4).padding(25)
+                    }
+                    Spacer()
+                    NavigationLink{TaskMenuView(currentTask: Task(name: "Drink more water", bio:
+                                                                    "today is the day you go and drink more water do it today right now", type: 12)).environmentObject(user)} label: {
+                        Image(systemName: "plus")
+                            .font(.title.weight(.semibold))
+                            .padding()
+                            .background(.button)
+                            .foregroundColor(.white)
+                            .clipShape(Circle())
+                            .shadow(radius: 4, x: 0, y: 4).padding(25)
+                    }
+                    
+                    
+                }
+            }
+
 
         }.ignoresSafeArea(edges: .bottom).onAppear(){
             randomAffirm = myAffirms.randomElement() ?? ""
-
+            
             if user.completedTasksAmount < 2{
                 currentPlantIndex = 1
             }
@@ -239,8 +292,22 @@ struct MainView: View {
                 currentPlantIndex = 8
                 plantPadding = 8
             }
+            if user.completedPlants.count == 0{
+                multiplier = 10
+            }
+            if user.completedPlants.count == 1{
+                multiplier = 5
+            }
+            if user.completedPlants.count == 2{
+                multiplier = 3
+            }
+            if user.completedPlants.count == 3{
+                multiplier = 1
+            }
+        }
             
-            
+        }.alert("\((30 - user.completedTasksAmount) / multiplier) more goals to go!", isPresented: $showingAlert) {
+            Button("OK", role: .cancel) { }
         }
     }
 }

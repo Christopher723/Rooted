@@ -10,14 +10,13 @@ import SwiftUI
 struct AddTaskButton: View {
     var body: some View {
         ZStack{
-            Circle()
-                .foregroundStyle(.button)
-                .frame(width: 50)
             Image(systemName: "plus")
-                .resizable()
-                .imageScale(.medium)
-                .frame(width: 25,height: 25)
-                .foregroundStyle(.white)
+                .font(.title.weight(.semibold))
+                .padding()
+                .background(.button)
+                .foregroundColor(.white)
+                .clipShape(Circle())
+                .shadow(radius: 4, x: 0, y: 4).padding(25)
         }
     }
 }

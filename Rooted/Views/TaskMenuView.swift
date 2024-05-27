@@ -13,7 +13,7 @@ struct TaskMenuView: View {
     @State var currentTask: Task
     @EnvironmentObject var user: User
     var body: some View {
-        ZStack{
+        ZStack(){
             
             Color(.backgroundBrown).ignoresSafeArea()
             VStack{
@@ -70,23 +70,28 @@ struct TaskMenuView: View {
                         Spacer()
                         }
                         
-                }
+                }.padding(.bottom, 15)
                 
-                HStack{
-                    Spacer()
-                    AddTaskButton()
-                        .padding()
-                        .onTapGesture{
-                            isPresented.toggle()
-                        }
-                }
-                Spacer()
-                    .frame(height: 50)
+                
+                    
+                
+                
+                
             }
             if isShowingDetail{
                 TaskDetailView(isShowing: $isShowingDetail, myTask: currentTask).environmentObject(user)
             }
-            }.sheet(isPresented: $isPresented, content: {TaskEditView(isPresented: $isPresented).environmentObject(user)})
+            VStack {
+               Spacer()
+               HStack {
+                   Spacer()
+                   AddTaskButton()
+                       .onTapGesture {
+                           isPresented.toggle()
+                       }
+               }
+           }
+            }.ignoresSafeArea(edges: .bottom).sheet(isPresented: $isPresented, content: {TaskEditView(isPresented: $isPresented).environmentObject(user)})
             
         
     }
