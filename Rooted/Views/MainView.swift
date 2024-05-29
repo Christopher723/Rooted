@@ -10,7 +10,7 @@ import _SpriteKit_SwiftUI
 
 
 struct MainView: View {
-    @EnvironmentObject var user: User
+    @StateObject var user = User()
     @State var isShowing: Bool = false
     @State var isRaining: Bool = false
     @State var isFinished: Bool = false
