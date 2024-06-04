@@ -119,7 +119,6 @@
 			isa = PBXGroup;
 			children = (
 				3A3FDCBE2BD1A8160083AB61 /* MainView.swift */,
-				3A3FDCB02BD1A6C30083AB61 /* ContentView.swift */,
 				3A3FDCBC2BD1A7FF0083AB61 /* TaskMenuView.swift */,
 				3A3FDCC02BD1A8230083AB61 /* CollectionView.swift */,
 				3A3FDCC42BD1ABF40083AB61 /* TaskEditView.swift */,
@@ -127,6 +126,7 @@
 				3A780B0D2BE3F6040091F310 /* CompletedTasksView.swift */,
 				3A780B0F2BE3FC390091F310 /* TaskView.swift */,
 				3A8D0D1D2BEAC337002A0384 /* SwiftUIView.swift */,
+				3A3FDCB02BD1A6C30083AB61 /* ContentView.swift */,
 				3A8D0D132BEAB876002A0384 /* Rain.sks */,
 				3AB28E892C021F6E00FE14ED /* Magic.sks */,
 				3AB28E8B2C0222E200FE14ED /* Smoke.sks */,
@@ -354,7 +354,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"Rooted/Preview Content\"";
 				DEVELOPMENT_TEAM = 2X9S683H4Y;
 				ENABLE_PREVIEWS = YES;
@@ -369,7 +369,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = CW.Rooted;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -388,7 +388,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"Rooted/Preview Content\"";
 				DEVELOPMENT_TEAM = 2X9S683H4Y;
 				ENABLE_PREVIEWS = YES;
@@ -403,7 +403,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = CW.Rooted;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

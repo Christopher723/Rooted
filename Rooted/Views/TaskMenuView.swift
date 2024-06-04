@@ -105,6 +105,8 @@ func getColorForType(_ type: Int) -> Color {
         return Color.blue
     case 2:
         return Color.green
+    case 3:
+        return Color.purple
     default:
         return Color.gray // or any other default color
     }
@@ -117,6 +119,8 @@ func getFillForType(_ type: Int) -> Color {
         return Color.blueFill
     case 2:
         return Color.greenFill
+    case 3:
+        return Color.purpleFill
     default:
         return Color.gray // or any other default color
     }

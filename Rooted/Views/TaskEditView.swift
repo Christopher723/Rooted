@@ -8,7 +8,7 @@
 import SwiftUI
 
 enum myTypes: String,CaseIterable, Identifiable {
-    case physical, mental, spiritual
+    case physical, mental, spiritual, other
     var id: Self {self}
 }
 
@@ -34,6 +34,9 @@ struct TaskEditView: View {
                        }
                    }
                 TextField("Enter Description", text: $myBio)
+                
+                
+                
                 Picker("Type", selection: $selectedTypes){
                     ForEach(myTypes.allCases) {
                         type in
@@ -54,8 +57,11 @@ struct TaskEditView: View {
                     else if mySuggestedTask.type == 2{
                         selectedTypes = .mental
                     }
-                    else{
+                    else if mySuggestedTask.type == 3{
                         selectedTypes = .spiritual
+                    }
+                    else{
+                        selectedTypes = .other
                     }
                     
                     
@@ -77,6 +83,8 @@ struct TaskEditView: View {
                         myType = 1
                     case .spiritual:
                         myType = 2
+                    case .other:
+                        myType = 3
                     }
                     user.myTasks.append(Task(name: myName, bio: myBio, type: myType))
                     user.save()

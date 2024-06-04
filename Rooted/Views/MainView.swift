@@ -16,8 +16,10 @@ struct MainView: View {
     @State var isFinished: Bool = false
     @State var isFert: Bool = false
     @State var showingAlert = false
+    @State var showingDone = false
     @State var randomAffirm: String = ""
     @State var multiplier: Int = 1
+    @State var goalsToGo: Int = -1
     var myPlants: [String] = ["root1","root2","root3","root4","root5","root6","root7","root8","root9"]
     
     @State var currentPlantIndex: Int = 0
@@ -91,9 +93,21 @@ struct MainView: View {
                                     
                                     
                                     if user.completedTasksAmount * 10 >= 300{
+                                        let delay: TimeInterval = 0.2 // Initial delay time
+                                        for i in 0..<9 {
+                                            DispatchQueue.main.asyncAfter(deadline: .now() + delay * Double(i)) {
+                                                currentPlantIndex = i
+                                            }
+                                        }
                                         withAnimation(.linear(duration: 2)) {
                                             isFinished = true
                                         }
+                                       
+                                           
+                                            
+                                            
+                                            
+                                        
                                         UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
                                         DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
                                             withAnimation(.linear(duration: 1)) {
@@ -137,6 +151,15 @@ struct MainView: View {
                             
                             
                         }.onTapGesture {
+                          
+                            if (30 - user.completedTasksAmount) / multiplier >= 0{
+                                   goalsToGo = (30 - user.completedTasksAmount) / multiplier
+                               
+                               
+                            }
+                            else{
+                                goalsToGo = 0
+                            }
                             showingAlert.toggle()
                         }
                         
@@ -150,17 +173,7 @@ struct MainView: View {
                         .multilineTextAlignment(.center)
                         .padding(.horizontal, 10)
                         .padding(.top, 15)
-//                    .overlay(
-//                        
-//                        HStack(spacing: 100) {
-//                            Rectangle()
-//                                .frame(width: 4, height: 23)
-//                                .foregroundColor(.white)
-//                            Rectangle()
-//                                .frame(width: 4, height: 23)
-//                                .foregroundColor(.white)
-//                        }.padding(.top, 51)
-//                    )
+
                     Spacer()
                    
                     ZStack{
@@ -172,6 +185,7 @@ struct MainView: View {
                             
                             .onTapGesture{
                                 if user.completedTasks.count > 1{
+                                    
                                     isShowing = true
                                     print(user.completedTasksAmount)
                                 }
@@ -257,6 +271,9 @@ struct MainView: View {
 
 
         }.ignoresSafeArea(edges: .bottom).onAppear(){
+            if goalsToGo == 0{
+                showingDone = true
+            }
             randomAffirm = myAffirms.randomElement() ?? ""
             
             if user.completedTasksAmount < 2{
@@ -306,7 +323,10 @@ struct MainView: View {
             }
         }
             
-        }.alert("\((30 - user.completedTasksAmount) / multiplier) more goals to go!", isPresented: $showingAlert) {
+        }.alert("\(goalsToGo)  more goals to go!", isPresented: $showingAlert) {
+            Button("OK", role: .cancel) { }
+        }
+        .alert("You did it!!! Click the leaf icon to complete plant", isPresented: $showingDone) {
             Button("OK", role: .cancel) { }
         }
     }
